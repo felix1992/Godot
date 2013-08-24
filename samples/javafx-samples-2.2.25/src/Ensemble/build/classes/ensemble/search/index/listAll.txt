@@ -1,0 +1,10 @@
+_0.fdt:20699
+_0.fdx:1076
+_0.fnm:71
+_0.frq:2650
+_0.nrm:540
+_0.prx:2113
+_0.tii:339
+_0.tis:19277
+segments.gen:20
+segments_1:233

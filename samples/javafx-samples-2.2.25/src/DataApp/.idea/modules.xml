@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DataAppClient/DataAppClient.iml" filepath="$PROJECT_DIR$/DataAppClient/DataAppClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataAppLibrary/DataAppLibrary.iml" filepath="$PROJECT_DIR$/DataAppLibrary/DataAppLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataAppLoader/DataAppLoader.iml" filepath="$PROJECT_DIR$/DataAppLoader/DataAppLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataAppPreloader/DataAppPreloader.iml" filepath="$PROJECT_DIR$/DataAppPreloader/DataAppPreloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataAppServer/src/DataAppServer.iml" filepath="$PROJECT_DIR$/DataAppServer/src/DataAppServer.iml" />
+    </modules>
+  </component>
+</project>
+
