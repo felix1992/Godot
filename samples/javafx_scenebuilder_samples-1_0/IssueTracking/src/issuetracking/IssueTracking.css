@@ -1,0 +1,181 @@
+/* Description textArea */
+
+
+.descriptionValue {
+    -fx-background-color: white;
+    -fx-font: 1.166666em "Arial";
+ }
+
+.descriptionValue:focused {
+    -fx-background-color: -fx-focus-color, transparent, white;
+} 
+
+.descriptionValue:hover {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, white;
+}
+
+
+
+/* Synopsis TextField */
+
+
+.synopsisField {
+    -fx-background-color: white;
+    -fx-font: 1.5em "Arial";
+}
+
+.synopsisField:hover {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, white;
+}
+
+.synopsisField:focused {
+    -fx-background-color: -fx-focus-color, transparent, white;
+} 
+
+
+
+/* Anchor Pane, Label and Textfield in Properties area */
+
+
+.propLabel{
+	-fx-text-fill: #AAAAAA;
+	-fx-font: 0.833333em "Arial";
+}
+
+.propTextField {
+    -fx-background-insets: 0;
+    -fx-font: 1em "Arial";
+    -fx-padding: 0;
+    -fx-background-color: white;
+}
+
+.dividerLines {
+	-fx-stroke-width: 0.9;
+	-fx-stroke:#d6d6d6;
+}
+
+.topRoundedAnchorPane {
+    -fx-border-radius:10 10 0 0;
+    -fx-border-color: #d6d6d6;
+    -fx-border-width: 0.083333em;	
+}
+
+.statusAnchorPane {
+    -fx-border-color: #d6d6d6;	
+    -fx-border-width: 0.083333em;
+}
+
+.bottomRoundedAnchorPane {
+    -fx-border-radius:0 0 10 10;
+    -fx-border-color: #d6d6d6;	
+    -fx-border-width: 0.083333em;
+} 
+
+
+
+/* A rounded AnchorPane */
+
+
+.roundedAnchorPane {
+    -fx-border-radius:10 10 10 10;
+    -fx-border-color: #d6d6d6;
+    -fx-border-width: 0.083333em;
+}
+
+
+
+/* Bugs table rules */
+
+
+.bugsTable .table-row-cell {
+    -fx-font: 1em "Arial";
+    -fx-background-insets: 0;
+}
+
+.bugsTable .column-header{
+    -fx-font: 1em "Arial";
+}
+
+
+
+/* Projects list */
+
+
+.blackList {
+    -fx-background-color:#333333;
+}
+
+. blackList .list-cell {
+    -fx-padding: 6 0 0 13;
+    -fx-background-color: #333333;
+    -fx-text-fill: lightgrey;
+}
+
+. blackList .list-cell:focused {
+    -fx-text-fill: white;
+}
+
+
+/* ToolBar buttons background and font*/
+
+
+.roundedButton {
+	-fx-background-radius: 12;
+	-fx-font: 1em "Arial";
+	-fx-padding: 0 0 0 0;	
+	-fx-shadow-highlight-color: f0f0f0;
+	-fx-body-color: linear-gradient(from 0em 0em to 0em 2.083333em, white, #D7D7D7, white);
+}
+
+.topBarBackground {
+	-fx-background-color: linear-gradient(to bottom, #f8f8f8, #b5b5b5);
+}
+
+
+
+/* Splitpane styling */
+
+
+.vSplitPaneLeft {
+    -fx-background-color:#444444;
+}
+
+.vsplitpane {
+    -fx-padding: -1 -1 -2 -2 ;
+    -fx-background-insets: 1; /* remov left right line of splitPane*/
+}
+
+.vsplitpane:horizontal > * > .split-pane-divider {
+    -fx-background-color:linear-gradient(to right, white, grey);
+    -fx-background-insets: 0,0;
+}
+
+.vsplitpane  *.vertical-grabber {
+    -fx-background-color:black;
+    -fx-shape: "M0 0 L0 0 L0 5 L2 5 L2 0 L0 0 Z"; /* TODO NOT THE RIGHT L&F */
+}
+
+.vsplitpane  *.horizontal-grabber {
+    -fx-background-color:black;
+    -fx-shape: "M0 0 L0 0 L0 5 L2 5 L2 0 L0 0 Z"; /* TODO NOT THE RIGHT L&F */
+}
+
+.hsplitpane {
+    -fx-background-color:white;
+    -fx-padding: -1 -1 -2 -2 ;
+    -fx-background-insets: 1; /* remov left right line of splitPane*/
+}
+
+.hsplitpane:vertical > * > .split-pane-divider {
+    -fx-background-color:linear-gradient(to bottom, white, grey);
+    -fx-background-insets: 0,0;
+}
+
+
+
+/* Root AnchorPane background */
+
+
+.background {
+    -fx-background-color:yellow;
+}
