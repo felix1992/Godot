@@ -1,0 +1,5 @@
+
+0.0.1
+
+[ J. Preiss <joerg.preiss@slesa.de> ]
+- Convert the build script written for the bash into an Gtk application

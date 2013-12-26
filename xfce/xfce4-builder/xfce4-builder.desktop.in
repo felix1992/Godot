@@ -1,0 +1,10 @@
+[Desktop Entry]
+_Name=XFCE Builder
+_Comment=Build XFCE from sources
+_GenericName=XfceBuilder
+Exec=xfce4-builder
+Icon=utilities-system
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=System;Utility;

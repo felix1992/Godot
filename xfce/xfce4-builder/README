@@ -1,0 +1,27 @@
+*********************************************
+
+xfce4-builder -- Build XFCE from its sources
+
+*********************************************
+
+** Retrieving **
+
+The latest version of xfce4-builder can always be obtained from
+http://goodies.xfce.org/releases/xfce4-builder/. Please check to 
+see if there is a newer version available before reporting bugs.
+
+** Requirements **
+
+GTK+ 2.12
+Cairo 1.5
+Libwnck 2.0 (optional)
+
+** Building **
+
+./configure
+make
+make install (as root if needed)
+
+** Usage **
+
+The GUI can be started by running 'xfce4-builder'.
