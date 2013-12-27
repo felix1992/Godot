@@ -1,6 +1,6 @@
-SUBDIRS =								\
+SUBDIRS =							\
 	po								\
-	src
+	builder
 
 desktopdir = $(datadir)/applications
 desktop_in_files = xfce4-builder.desktop.in

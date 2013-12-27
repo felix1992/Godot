@@ -12,13 +12,13 @@ m4_define([builder_version_micro], [1])
 m4_define([builder_version_build], [@REVISION@])
 m4_define([builder_version_tag], [git])
 m4_define([builder_version], [builder_version_major().builder_version_minor().builder_version_micro()ifelse(builder_version_tag(), [git], [builder_version_tag()-builder_version_build()], [builder_version_tag()])])
-
+s
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2013-2014
         The Xfce development team. All rights reserved.])
-AC_INIT([Xfce4 Builder], [builder_version], [http://bugzilla.xfce.org/], [xfce4-builder],
+AC_INIT([Xfce4 Builder], [builder_version], [httpa://github.com/Slesa/Godot/xfce4-builder], [xfce4-builder],
         [http://goodies.xfce.org/projects/applications/xfce4-builder])
 AC_PREREQ([2.50])
 AC_CANONICAL_TARGET()
@@ -135,7 +135,7 @@ dnl *** Outputs ***
 dnl ***************
 AC_OUTPUT([
 Makefile
-src/Makefile
+builder/Makefile
 po/Makefile.in
 ])
 
