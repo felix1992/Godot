@@ -23,7 +23,9 @@ xfce4_builder_LDADD = 						\
 	$(NULL)
 
 xfce4_builder_SOURCES =						\
-	main.c								
+	main.c									\
+	builder-application.c					\
+	builder-window.c
 	$(NULL)
 
 

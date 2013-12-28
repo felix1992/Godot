@@ -23,9 +23,15 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
+current_page=6
 FILE_NAME_0=0;None;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fconfigure.ac.in;0;4
 FILE_NAME_1=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmain.c;0;4
+FILE_NAME_2=5818;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmousepad-application.c;0;4
+FILE_NAME_3=792;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmousepad-application.h;0;4
+FILE_NAME_4=1708;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmousepad-window.h;0;4
+FILE_NAME_5=4157;XML;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmousepad-window-ui.xml;0;4
+FILE_NAME_6=1115;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmousepad-window.c;0;4
+FILE_NAME_7=791;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fxfce%2Fmousepad%2Fmousepad%2Fmousepad-dbus.h;0;4
 
 [VTE]
 last_dir=/home/jpreiss

@@ -23,9 +23,12 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=0;None;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fconfigure.ac.in;0;4
-FILE_NAME_1=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fsrc%2Fmain.c;0;4
+current_page=4
+FILE_NAME_0=3013;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-application.c;0;4
+FILE_NAME_1=532;Make;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2FMakefile.am;0;4
+FILE_NAME_2=4094;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fmain.c;0;4
+FILE_NAME_3=793;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.h;0;4
+FILE_NAME_4=768;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.c;0;4
 
 [VTE]
 last_dir=/home/jpreiss

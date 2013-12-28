@@ -175,6 +175,7 @@ main (int argc, char *argv[])
 	/* cleanup */
 	g_free (working_directory);
 
+#ifdef NEVER
 	/* do not enter the main loop, unless we have atleast one window */
 	if (G_LIKELY (builder_application_has_windows (application)))
     {
@@ -191,6 +192,7 @@ main (int argc, char *argv[])
 		g_object_unref (G_OBJECT (dbus_service));
 #endif
     }
+#endif
 
 	/* release application reference */
 	g_object_unref (G_OBJECT (application));
