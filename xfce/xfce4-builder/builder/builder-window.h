@@ -26,12 +26,11 @@ G_BEGIN_DECLS
 #define BUILDER_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), BUILDER_TYPE_WINDOW))
 #define BUILDER_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), BUILDER_TYPE_WINDOW, BuilderWindowClass))
 
-typedef struct _BuilderWindowClass BuilderWindowClass;
 typedef struct _BuilderWindow      BuilderWindow;
 
 GType           builder_window_get_type         (void) G_GNUC_CONST;
-
 GtkWidget      *builder_window_new              (void);
+//GtkTreeModel *	xtm_process_window_get_model			(XtmProcessWindow *window);
 
 G_END_DECLS
 
