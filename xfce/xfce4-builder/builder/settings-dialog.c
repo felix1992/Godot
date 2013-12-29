@@ -82,15 +82,15 @@ builder_bind_toggle_button (GtkBuilder *builder, gchar *widget_name, BuilderSett
 	g_object_set_data (G_OBJECT (button), "setting-name", setting_name);
 	g_signal_connect (button, "toggled", G_CALLBACK (button_toggled), settings);
 }
-/*
+
 static void
-combobox_changed (GtkComboBox *combobox, XtmSettings *settings)
+combobox_changed (GtkComboBox *combobox, BuilderSettings *settings)
 {
 	guint active = gtk_combo_box_get_active (combobox);
 	gchar *setting_name = g_object_get_data (G_OBJECT (combobox), "setting-name");
 	g_object_set (settings, setting_name, active, NULL);
 }
-*/
+
 static void
 builder_settings_dialog_init (BuilderSettingsDialog *dialog)
 {

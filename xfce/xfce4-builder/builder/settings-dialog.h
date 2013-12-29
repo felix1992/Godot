@@ -24,6 +24,8 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
+G_BEGIN_DECLS
+
 #define BUILDER_TYPE_SETTINGS_DIALOG			(builder_settings_dialog_get_type ())
 #define BUILDER_SETTINGS_DIALOG(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), BUILDER_TYPE_SETTINGS_DIALOG, BuilderSettingsDialog))
 #define BUILDER_SETTINGS_DIALOG_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), BUILDER_TYPE_SETTINGS_DIALOG, BuilderSettingsDialogClass))
@@ -36,5 +38,7 @@ typedef struct _BuilderSettingsDialog BuilderSettingsDialog;
 GType		 builder_settings_dialog_get_type			(void);
 GtkWidget	*builder_settings_dialog_new				(GtkWindow *parent_window);
 void		 builder_settings_dialog_run				(BuilderSettingsDialog *dialog);
+
+G_END_DECLS
 
 #endif /* !SETTINGS_DIALOG_H */

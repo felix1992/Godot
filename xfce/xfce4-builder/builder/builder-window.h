@@ -17,6 +17,10 @@
 #ifndef __BUILDER_WINDOW_H__
 #define __BUILDER_WINDOW_H__
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 G_BEGIN_DECLS
 
 #define BUILDER_TYPE_WINDOW            (builder_window_get_type ())

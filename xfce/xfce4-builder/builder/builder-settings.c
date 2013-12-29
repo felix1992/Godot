@@ -18,11 +18,16 @@
 #include <config.h>
 #endif
 
+#include <glib-object.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
 #include "builder-settings.h"
 
 enum
 {
 	PROP_SHOW_STATUS_ICON = 1,
+	PROP_TOOLBAR_STYLE,
 	PROP_WINDOW_WIDTH,
 	PROP_WINDOW_HEIGHT,
 	N_PROPS,
@@ -59,6 +64,8 @@ builder_settings_class_init (BuilderSettingsClass *klass)
 	class->set_property = builder_settings_set_property;
 	g_object_class_install_property (class, PROP_SHOW_STATUS_ICON,
 		g_param_spec_boolean ("show-status-icon", "ShowStatusIcon", "Show/hide the status icon", TRUE, G_PARAM_READWRITE));
+	g_object_class_install_property (class, PROP_TOOLBAR_STYLE,
+		g_param_spec_enum ("toolbar-style", "ToolbarStyle", "Toolbar style", BUILDER_TYPE_TOOLBAR_STYLE, BUILDER_TOOLBAR_STYLE_DEFAULT, G_PARAM_READWRITE));
 /*	g_object_class_install_property (class, PROP_SHOW_ALL_PROCESSES,
 		g_param_spec_boolean ("show-all-processes", "ShowAllProcesses", "Show all processes", FALSE, G_PARAM_READWRITE));
 	g_object_class_install_property (class, PROP_MORE_PRECISION,
@@ -69,8 +76,6 @@ builder_settings_class_init (BuilderSettingsClass *klass)
 		g_param_spec_boolean ("monitor-paint-box", "MonitorPaintBox", "Paint box around monitor", TRUE, G_PARAM_READWRITE));
 	g_object_class_install_property (class, PROP_SHOW_APPLICATION_ICONS,
 		g_param_spec_boolean ("show-application-icons", "ShowApplicationIcons", "Show application icons", TRUE, G_PARAM_READWRITE));
-	g_object_class_install_property (class, PROP_TOOLBAR_STYLE,
-		g_param_spec_enum ("toolbar-style", "ToolbarStyle", "Toolbar style", XTM_TYPE_TOOLBAR_STYLE, XTM_TOOLBAR_STYLE_DEFAULT, G_PARAM_READWRITE));
 	g_object_class_install_property (class, PROP_PROMPT_TERMINATE_TASK,
 		g_param_spec_boolean ("prompt-terminate-task", "PromptTerminateTask", "Prompt dialog for terminating a task", TRUE, G_PARAM_READWRITE));
 	g_object_class_install_property (class, PROP_REFRESH_RATE,
@@ -143,18 +148,45 @@ transform_string_to_boolean (const GValue *src, GValue *dst)
 }
 
 static void
+transform_string_to_int (const GValue *src, GValue *dst)
+{
+	g_value_set_int (dst, (gint)strtol (g_value_get_string (src), NULL, 10));
+}
+
+static void
+transform_string_to_uint (const GValue *src, GValue *dst)
+{
+	g_value_set_uint (dst, (gint)strtoul (g_value_get_string (src), NULL, 10));
+}
+
+static void
+transform_string_to_enum (const GValue *src, GValue *dst)
+{
+	GEnumClass *klass;
+	gint value = 0;
+	guint n;
+
+	klass = g_type_class_ref (G_VALUE_TYPE (dst));
+	for (n = 0; n < klass->n_values; ++n)
+	{
+		value = klass->values[n].value;
+		if (!g_ascii_strcasecmp (klass->values[n].value_name, g_value_get_string (src)))
+			break;
+	}
+	g_type_class_unref (klass);
+	g_value_set_enum (dst, value);
+}
+
+static void
 register_transformable (void)
 {
 	if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
 		g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
-
-//	if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT))
-//		g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
-
-//	if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))
-//		g_value_register_transform_func (G_TYPE_STRING, G_TYPE_UINT, transform_string_to_uint);
-
-//	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_ENUM, transform_string_to_enum);
+	if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT))
+		g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
+	if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))
+		g_value_register_transform_func (G_TYPE_STRING, G_TYPE_UINT, transform_string_to_uint);
+	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_ENUM, transform_string_to_enum);
 }
 
 static void
@@ -305,4 +337,26 @@ builder_settings_get_default (void)
 		g_object_ref (settings);
 	}
 	return settings;
+}
+
+
+
+GType
+builder_toolbar_style_get_type (void)
+{
+	static GType type = G_TYPE_INVALID;
+
+	static const GEnumValue values[] = {
+		{ BUILDER_TOOLBAR_STYLE_DEFAULT, "DEFAULT", N_("Default") },
+		{ BUILDER_TOOLBAR_STYLE_SMALL, "SMALL", N_("Small") },
+		{ BUILDER_TOOLBAR_STYLE_LARGE, "LARGE", N_("Large") },
+		{ BUILDER_TOOLBAR_STYLE_TEXT, "TEXT", N_("Text") },
+		{ 0, NULL, NULL }
+	};
+
+	if (type != G_TYPE_INVALID)
+		return type;
+
+	type = g_enum_register_static ("BuilderToolbarStyle", values);
+	return type;
 }

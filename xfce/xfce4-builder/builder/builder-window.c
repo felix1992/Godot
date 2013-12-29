@@ -30,7 +30,7 @@
 typedef struct _BuilderWindowClass BuilderWindowClass;
 struct _BuilderWindowClass
 {
-	GtkWidgetClass		parent_class;
+	GtkWidgetClass	parent_class;
 };
 struct _BuilderWindow
 {
@@ -44,7 +44,7 @@ struct _BuilderWindow
 //	GtkWidget *		treeview;
 	GtkWidget		*statusbar;
 //	GtkWidget *		exec_button;
-	GtkWidget		*settings_button;
+//	GtkWidget		*settings_button;
 	BuilderSettings *settings;
 };
 G_DEFINE_TYPE (BuilderWindow, builder_window, GTK_TYPE_WIDGET)
@@ -55,10 +55,11 @@ static void	builder_window_hide				(GtkWidget *widget);
 
 static void	emit_destroy_signal				(BuilderWindow *window);
 static gboolean	emit_delete_event_signal	(BuilderWindow *window, GdkEvent *event);
-//static void	toolbar_update_style			(BuilderWindow *window);
+static void	toolbar_update_style			(BuilderWindow *window);
 //static void	monitor_update_step_size		(BuilderWindow *window);
 //static void	monitor_update_paint_box		(BuilderWindow *window);
 static void	show_about_dialog				(BuilderWindow *window);
+static void	show_settings_dialog			(BuilderWindow *window);
 
 
 
@@ -95,16 +96,14 @@ builder_window_init (BuilderWindow *window)
 	g_signal_connect_swapped (window->window, "delete-event", G_CALLBACK (emit_delete_event_signal), window);
 
 	window->toolbar = GTK_WIDGET (gtk_builder_get_object (window->builder, "process-toolbar"));
-//	g_signal_connect_swapped (window->settings, "notify::toolbar-style", G_CALLBACK (toolbar_update_style), window);
-//	g_object_notify (G_OBJECT (window->settings), "toolbar-style");
+	g_signal_connect_swapped (window->settings, "notify::toolbar-style", G_CALLBACK (toolbar_update_style), window);
+	g_object_notify (G_OBJECT (window->settings), "toolbar-style");
 
 //	window->exec_button = xtm_exec_tool_button_new ();
 //	gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), GTK_TOOL_ITEM (window->exec_button), 0);
 
-	window->settings_button = GTK_WIDGET (gtk_builder_get_object (window->builder, "toolbutton-settings"));
-//	g_signal_connect_swapped (button, "clicked", G_CALLBACK (show_about_dialog), window);
-//	window->settings_button = builder_settings_tool_button_new ();
-//	gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), GTK_TOOL_ITEM (window->settings_button), 1);
+	button = GTK_WIDGET (gtk_builder_get_object (window->builder, "toolbutton-settings"));
+	g_signal_connect_swapped (button, "clicked", G_CALLBACK (show_settings_dialog), window);
 
 	/*{
 		GtkWidget *toolitem;
@@ -181,8 +180,8 @@ builder_window_finalize (GObject *object)
 //	if (GTK_IS_TOOL_ITEM (window->exec_button))
 //		gtk_widget_destroy (window->exec_button);
 
-	if (GTK_IS_TOOL_ITEM (window->settings_button))
-		gtk_widget_destroy (window->settings_button);
+//	if (GTK_IS_TOOL_ITEM (window->settings_button))
+//		gtk_widget_destroy (window->settings_button);
 
 	if (BUILDER_IS_SETTINGS (window->settings))
 		g_object_unref (window->settings);
@@ -205,6 +204,52 @@ emit_delete_event_signal (BuilderWindow *window, GdkEvent *event)
 	g_signal_emit_by_name (window, "delete-event", event, &ret, G_TYPE_BOOLEAN);
 	return ret;
 }
+
+
+static void
+toolbar_update_style (BuilderWindow *window)
+{
+	BuilderToolbarStyle toolbar_style;
+	g_object_get (window->settings, "toolbar-style", &toolbar_style, NULL);
+	switch (toolbar_style)
+	{
+		default:
+		case BUILDER_TOOLBAR_STYLE_DEFAULT:
+		gtk_toolbar_set_icon_size (GTK_TOOLBAR (window->toolbar), GTK_ICON_SIZE_MENU);
+		gtk_toolbar_unset_style (GTK_TOOLBAR (window->toolbar));
+		break;
+
+		case BUILDER_TOOLBAR_STYLE_SMALL:
+		gtk_toolbar_set_icon_size (GTK_TOOLBAR (window->toolbar), GTK_ICON_SIZE_SMALL_TOOLBAR);
+		gtk_toolbar_set_style (GTK_TOOLBAR (window->toolbar), GTK_TOOLBAR_ICONS);
+		break;
+
+		case BUILDER_TOOLBAR_STYLE_LARGE:
+		gtk_toolbar_set_icon_size (GTK_TOOLBAR (window->toolbar), GTK_ICON_SIZE_LARGE_TOOLBAR);
+		gtk_toolbar_set_style (GTK_TOOLBAR (window->toolbar), GTK_TOOLBAR_ICONS);
+		break;
+
+		case BUILDER_TOOLBAR_STYLE_TEXT:
+		gtk_toolbar_set_icon_size (GTK_TOOLBAR (window->toolbar), GTK_ICON_SIZE_MENU);
+		gtk_toolbar_set_style (GTK_TOOLBAR (window->toolbar), GTK_TOOLBAR_BOTH);
+		break;
+	}
+}
+
+#if !GTK_CHECK_VERSION(2,18,0)
+static void
+url_hook_about_dialog (GtkAboutDialog *dialog, const gchar *uri, gpointer user_data)
+{
+	gchar *command = g_strdup_printf ("exo-open %s", uri);
+	if (!g_spawn_command_line_async (command, NULL))
+	{
+		g_free (command);
+		command = g_strdup_printf ("firefox %s", uri);
+		g_spawn_command_line_async (command, NULL);
+	}
+	g_free (command);
+}
+#endif
 
 static void
 show_about_dialog (BuilderWindow *window)
@@ -286,4 +331,21 @@ builder_window_hide (GtkWidget *widget)
 	GTK_WIDGET_UNSET_FLAGS (widget, GTK_VISIBLE);
 }
 
+/*
+GtkTreeModel *
+xtm_process_window_get_model (XtmProcessWindow *window)
+{
+	g_return_val_if_fail (XTM_IS_PROCESS_WINDOW (window), NULL);
+	g_return_val_if_fail (GTK_IS_TREE_VIEW (window->treeview), NULL);
+	return gtk_tree_model_filter_get_model (GTK_TREE_MODEL_FILTER (gtk_tree_view_get_model (GTK_TREE_VIEW (window->treeview))));
+}
+*/
 
+static void
+show_settings_dialog (BuilderWindow *window)
+{
+//	GtkWidget *parent_window = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_WINDOW);
+	GtkWidget *dialog = xtm_settings_dialog_new (GTK_WINDOW (window));
+	xtm_settings_dialog_run (XTM_SETTINGS_DIALOG (dialog));
+	g_object_unref (dialog);
+}

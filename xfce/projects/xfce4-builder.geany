@@ -23,16 +23,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=2198;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fmain.c;0;4
-FILE_NAME_1=1118;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.h;0;4
-FILE_NAME_2=435;Make;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2FMakefile.am;0;4
-FILE_NAME_3=3710;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.c;0;4
-FILE_NAME_4=915;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-settings.h;0;4
-FILE_NAME_5=1540;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-settings.c;0;4
-FILE_NAME_6=1917;XML;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.ui;0;4
-FILE_NAME_7=772;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fsettings-dialog.h;0;4
-FILE_NAME_8=2379;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fsettings-dialog.c;0;4
+current_page=4
+FILE_NAME_0=3080;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fmain.c;0;4
+FILE_NAME_1=842;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.h;0;4
+FILE_NAME_2=11734;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-window.c;0;4
+FILE_NAME_3=1925;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-settings.h;0;4
+FILE_NAME_4=11482;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fbuilder-settings.c;0;4
+FILE_NAME_5=1861;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fsettings-dialog.h;0;4
+FILE_NAME_6=5947;C;0;EUTF-8;1;1;0;%2Fhome%2Fjpreiss%2Fwork%2Fgithub%2FGodot%2Fxfce%2Fxfce4-builder%2Fbuilder%2Fsettings-dialog.c;0;4
 
 [VTE]
 last_dir=/home/jpreiss

@@ -39,6 +39,17 @@ typedef struct _BuilderSettings BuilderSettings;
 GType			 builder_settings_get_type				(void);
 BuilderSettings *builder_settings_get_default			();
 
+typedef enum
+{
+	BUILDER_TOOLBAR_STYLE_DEFAULT,
+	BUILDER_TOOLBAR_STYLE_SMALL,
+	BUILDER_TOOLBAR_STYLE_LARGE,
+	BUILDER_TOOLBAR_STYLE_TEXT,
+} BuilderToolbarStyle;
+
+GType builder_toolbar_style_get_type (void);
+#define BUILDER_TYPE_TOOLBAR_STYLE (builder_toolbar_style_get_type ())
+
 G_END_DECLS
 
 #endif /* !__BUILDER_SETTINGS_H__ */

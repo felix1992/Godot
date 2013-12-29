@@ -105,14 +105,14 @@ int main (int argc, char *argv[])
 	window = builder_window_new ();
 	gtk_widget_show (window);
 
-//	task_manager = xtm_task_manager_new (xtm_process_window_get_model (XTM_PROCESS_WINDOW (window)));
-//	g_message ("Running as %s on %s", xtm_task_manager_get_username (task_manager), xtm_task_manager_get_hostname (task_manager));
+	g_signal_connect (settings, "notify::show-status-icon", G_CALLBACK (show_hide_status_icon), NULL);
+	g_signal_connect (window, "destroy", G_CALLBACK (destroy_window), NULL);
+	g_signal_connect (window, "delete-event", G_CALLBACK (delete_window), NULL);
 
 	gtk_main ();
 
 	g_object_unref (window);
 	g_object_unref (status_icon);
-//	g_object_unref (task_manager);
 	g_object_unref (settings);
 
 	return 0;
